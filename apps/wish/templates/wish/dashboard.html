@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Wish List</title>
+</head>
+<body>
+	<h1>Welcome, {{request.session.user.name}}</h1>
+	<a href="/logout">Logout</a>
+	<h3>Your Wish List:</h3>
+	<table>
+		<tr>
+			<th>Item</th>
+			<th>Added By</th>
+			<th>Date Added</th>
+			<th>Action</th>
+		</tr>
+		{% for item in myitems %}
+			<tr>
+				<td><a href="/product/{{item.id}}">{{item.item}}</a></td>
+				<td>{{item.useritem.name}}</td>
+				<td>{{item.dated_added}}</td>
+				<td><a href="/destroy/{{item.id}}">Remove From My Wishlist</a></td>
+			</tr>
+		{% endfor %}
+	</table>
+	<h3>Other Users' Wish List:</h3>
+	<table>
+		<tr>
+			<th>Item</th>
+			<th>Added By</th>
+			<th>Date Added</th>
+			<th>Action</th>
+		</tr>
+		{% for item in othersitems %}
+			<tr>
+				<td><a href="/product/{{item.id}}">{{item.item}}</a></td>
+				<td>{{item.useritem.name}}</td>
+				<td>{{item.dated_added}}</td>
+				<td><a href="/wishlist/{{item.id}}">Add to my wishlist</a></td>
+			</tr>
+		{% endfor %}
+	</table>
+	<a href="/add">Add Item</a>
+</body>
+</html>

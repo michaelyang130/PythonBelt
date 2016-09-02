@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create Item</title>
+</head>
+<body>
+	<h1>Create a New Wish List Item</h1>
+	<a href="/dashboard">Home</a>
+	<a href="/logout">Logout</a>	
+	<form action="/create" method="post">
+		{% csrf_token %}
+		<p>Item/Product: <input type="text" name="item"></p>
+		<input type="submit" value="Add">
+	</form>
+	{% if messages %}
+        {% for message in messages %}
+            <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

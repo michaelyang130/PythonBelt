@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{item.item}}</title>
+</head>
+<body>
+	<a href="/dashboard">Home</a>
+	<a href="/logout">Logout</a>
+	<h1>{{item.item}}</h1>
+	<h5>Users who added this product/item to their wish list:</h5>
+	{% if item.shareditem.all %}
+		<ul>
+			{% for xmen in item.shareditem.all %}
+				<li>{{xmen.name}}</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+</body>
+</html>
